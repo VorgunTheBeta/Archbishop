@@ -57,6 +57,7 @@ namespace Archbishop2
             {
                 if (!File.Exists(configLoc))
                     File.Copy(configExam, configLoc);
+                
             }
             catch
             {

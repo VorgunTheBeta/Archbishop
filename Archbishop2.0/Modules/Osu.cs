@@ -19,14 +19,12 @@ namespace Archbishop2.Modules
     {
         [Command("osuSearch")]
         [Remarks("Shows osu stats for a player.\n**Usage**: `$osu Name` or `$osu Name taiko`")]
-        public async Task OsuSearch(IUserMessage umsg, string usr, [Remainder] string mode = null)
+        public async Task OsuSearch(string usr, [Remainder] string mode = null)
         {
-            var channel = (ITextChannel)umsg.Channel;
-
+            SocketGuildChannel channel = Context.Channel as SocketGuildChannel;
             if (string.IsNullOrWhiteSpace(usr))
             {
-                await channel.TriggerTypingAsync();
-                await channel.SendMessageAsync("Please specify a user");
+                return;
             }
 
             using (HttpClient http = new HttpClient())
