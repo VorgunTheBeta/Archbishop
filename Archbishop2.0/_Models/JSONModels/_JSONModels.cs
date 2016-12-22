@@ -4,12 +4,12 @@ namespace Archbishop2.Classes.JSONModels
 {
     public class Credentials
     {
-        public string Token { get; set; } = "MjU0NTIyMjIzNDAwOTc2Mzg0.CyQYWw.GEFgUzE9ZO4YziCbnJSz3-nj8hE";
-        public string ClientId { get; set; } = "254522223400976384";
-        public ulong BotId { get; set; } = 254522223400976384;
-        public ulong[] OwnerIds { get; set; } = { 127188004216373248 };
-        public string GoogleAPIKey { get; set; } = "AIzaSyBp3qCSSd6qH1E-hnxuaY7vjeJhPM76ftA";
-        public string OsuAPIKey { get; set; } = "80d6f911d63ce74ff69c65965bd2ac8aae2f75ab";
+        public string Token { get; set; } = "";
+        public string ClientId { get; set; } = "";
+        public ulong BotId { get; set; } = ;
+        public ulong[] OwnerIds { get; set; } = {  };
+        public string GoogleAPIKey { get; set; } = "";
+        public string OsuAPIKey { get; set; } = "";
     }
     //public class WikipediaApiModel
     //{
