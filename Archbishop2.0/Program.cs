@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Discord.Commands;
+
 namespace Archbishop2
 {
 
@@ -17,6 +19,7 @@ namespace Archbishop2
                  => new Program().Start().GetAwaiter().GetResult();
 
         private DiscordSocketClient client;
+        private CommandHandler handler;
         public static Configuration config;
         public static Credentials creds;
         public async Task Start()
@@ -34,7 +37,11 @@ namespace Archbishop2
 
             await client.LoginAsync(TokenType.Bot, config.Token);
             await client.ConnectAsync();
+            var map = new DependencyMap();
+            map.Add(client);
 
+            handler = new CommandHandler();
+            await handler.Install(map);
             await Task.Delay(-1);                            // Prevent the console window from closing.
         }
 
