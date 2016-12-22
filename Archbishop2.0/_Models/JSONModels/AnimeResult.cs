@@ -19,6 +19,7 @@ namespace Archbishop2._Models.JSONModels
                     .WithImageUrl(image_url_lge)
                     .WithColor(new Color(255, 26, 198))
                     .AddField(x => x.WithName("Episodes").WithValue($"{total_episodes} total episodes").WithIsInline(true))
+                    .AddField(x => x.WithName("Synopsis").WithValue($"{description}").WithIsInline(false))
                     .AddField(x => x.WithName("Link").WithValue($"http://anilist.co/anime/{id}").WithIsInline(true))
             ;
             return embed;
