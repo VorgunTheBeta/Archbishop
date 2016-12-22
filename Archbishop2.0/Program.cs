@@ -3,6 +3,7 @@ using Discord.WebSocket;
 using Archbishop2.Classes.JSONModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Archbishop2
                 => Task.Run(()
                 => Console.WriteLine($"[{l.Severity}] {l.Source}: {l.Exception?.ToString() ?? l.Message}"));
 
-            await client.LoginAsync(TokenType.Bot, creds.Token);
+            await client.LoginAsync(TokenType.Bot, config.Token);
             await client.ConnectAsync();
 
             await Task.Delay(-1);                            // Prevent the console window from closing.
