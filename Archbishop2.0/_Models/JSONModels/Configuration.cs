@@ -31,7 +31,7 @@ namespace Archbishop2.Classes.JSONModels
         {
             Prefix = "$";
             Owners = new ulong[] { 0 };
-            Token = "MjU0NTIyMjIzNDAwOTc2Mzg0.CyQYWw.GEFgUzE9ZO4YziCbnJSz3-nj8hE";
+            Token = "";
         }
 
         /// <summary> Save the configuration to the specified file location. </summary>
