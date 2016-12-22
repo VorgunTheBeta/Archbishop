@@ -35,14 +35,14 @@ namespace Archbishop2.Classes.JSONModels
         }
 
         /// <summary> Save the configuration to the specified file location. </summary>
-        public void Save(string dir = "data/configuration.json")
+        public void Save(string dir = "data/config.json")
         {
             string file = Path.Combine(appdir, dir);
             File.WriteAllText(file, ToJson());
         }
 
         /// <summary> Load the configuration from the specified file location. </summary>
-        public static Configuration Load(string dir = "data/configuration.json")
+        public static Configuration Load(string dir = "data/config.json")
         {
             string file = Path.Combine(appdir, dir);
             return JsonConvert.DeserializeObject<Configuration>(File.ReadAllText(file));

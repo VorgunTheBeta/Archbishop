@@ -17,7 +17,7 @@ namespace Archbishop2.Modules
     [Name("Osu")]
     public class Osu : ModuleBase
     {
-        [Command("osu")]
+        [Command("osuSearch")]
         [Remarks("Shows osu stats for a player.\n**Usage**: `$osu Name` or `$osu Name taiko`")]
         public async Task OsuSearch(IUserMessage umsg, string usr, [Remainder] string mode = null)
         {

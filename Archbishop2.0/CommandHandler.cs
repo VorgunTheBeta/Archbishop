@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
+using System;
 using System.Reflection;
 using Discord.Commands;
 using Discord.WebSocket;
+using Archbishop2.Classes.JSONModels;
 
 namespace Archbishop2
 {
@@ -27,20 +29,20 @@ namespace Archbishop2
         {
             //Don't handle the command if it is a system message
             var message = parameterMessage as SocketUserMessage;
-            if (message == null) return;
-            // Mark where the prefix ends and the command begins
-            int argPos = 0;
-            // Determine if the message has a valid prefix, adjust argPos 
-            if (!(message.HasMentionPrefix(client.CurrentUser, ref argPos) || message.HasCharPrefix('$', ref argPos))) return;
+            if (message != null)
+            {
+                var context = new CommandContext(client, message);
+                
+                int argPos = 0;
+                if (message.HasStringPrefix(Configuration.Load().Prefix, ref argPos))
+                {
+                    Console.WriteLine(context.Message);
+                    var result = await commands.ExecuteAsync(context, argPos);
 
-            // Create a Command Context
-            var context = new CommandContext(client, message);
-            // Execute the Command, store the result
-            var result = await commands.ExecuteAsync(context, argPos, map);
-
-            // If the command failed, notify the user
-            if (!result.IsSuccess)
-                await message.Channel.SendMessageAsync($"**Error:** {result.ErrorReason}");
+                    if (!result.IsSuccess)
+                        await context.Channel.SendMessageAsync(result.ToString());
+                }
+            }
         }
 
     }

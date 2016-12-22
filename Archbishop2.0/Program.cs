@@ -37,6 +37,7 @@ namespace Archbishop2
 
             await client.LoginAsync(TokenType.Bot, config.Token);
             await client.ConnectAsync();
+
             var map = new DependencyMap();
             map.Add(client);
 
