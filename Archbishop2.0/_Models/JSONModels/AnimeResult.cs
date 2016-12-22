@@ -11,9 +11,9 @@ namespace Archbishop2._Models.JSONModels
         public string description;
         public string image_url_lge;
 
-        public object ToEmbed()
+        public EmbedBuilder ToEmbed()
         {
-            var embed = new EmbedBuilder()
+            EmbedBuilder embed = new EmbedBuilder()
                     .WithTitle(title_english)
                     .WithDescription(airing_status)
                     .WithImageUrl(image_url_lge)

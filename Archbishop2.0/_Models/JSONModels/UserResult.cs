@@ -10,7 +10,7 @@ namespace Archbishop2.Classes.JSONModels
         public string image_url_lge;
         public string about;
 
-        public object ToEmbed()
+        public EmbedBuilder ToEmbed()
         {
             var embed = new EmbedBuilder()
                     .WithTitle(display_name)

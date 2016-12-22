@@ -44,12 +44,19 @@ namespace Archbishop2.Modules
                     MemoryStream ms = new MemoryStream();
                     res.CopyTo(ms);
                     ms.Position = 0;
-                    await channel.SendFileAsync(ms, $"{usr}.png", $"`Profile Link:`https://osu.ppy.sh/u/{Uri.EscapeDataString(usr)}\n`Image provided by https://lemmmy.pw/osusig`").ConfigureAwait(false);
-                
+                    //await channel.SendFileAsync(ms, $"{usr}.png", $"`Profile Link:`https://osu.ppy.sh/u/{Uri.EscapeDataString(usr)}\n`Image provided by https://lemmmy.pw/osusig`").ConfigureAwait(false);
+                    /*EmbedBuilder embed = new EmbedBuilder()
+                        .WithTitle(usr)
+                        .WithColor(new Color(255, 26, 198))
+                        .WithImageUrl("usr.png")
+                        .WithUrl("https://osu.ppy.sh/u/" + usr);*/
+                    await Context.Channel.SendFileAsync(ms, $"{usr}.png", $"`Profile Link:`https://osu.ppy.sh/u/{Uri.EscapeDataString(usr)}\n`Image provided by https://lemmmy.pw/osusig`").ConfigureAwait(false);
+                    //await Context.Channel.SendMessageAsync("", embed: embed).ConfigureAwait(false);
                 }
                 catch(Exception ex)
                 {
-                    await channel.SendMessageAsync("💢 Failed retrieving osu signature :\\").ConfigureAwait(false);
+                    //await channel.SendMessageAsync("💢 Failed retrieving osu signature :\\").ConfigureAwait(false);
+                    await Context.Channel.SendMessageAsync("💢 Failed retrieving osu signature :\\").ConfigureAwait(false);
                     Console.WriteLine(ex);
                 }
             }
